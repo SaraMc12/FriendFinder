@@ -1,16 +1,18 @@
 var friendsList = require("../data/friend");
+console.log(friendsList)
 
 module.exports = function(app){
-	app.get("api/friend", function(req, res){
+	app.get("api/friends", function(req, res){
 		res.json(friendsList);
 	})
 
 // Create New Characters - takes in JSON input
-app.post("/api/friend", function(req, res) {
+app.post("/api/friends", function(req, res) {
+	console.log("post api friends: ", req.body)
 	var newFriend = req.body;
 	var userScore = 0;
-	var totalNum = 0;
-	var friendMatch = {
+	var total = 0;
+	var match = {
 		name: "",
 		pic: "",
 		scoreDif: 200
@@ -23,16 +25,17 @@ app.post("/api/friend", function(req, res) {
 		for (var j = 0; j < friendsList[i].preferences.length; j++) {
 			total += Math.abs(friendsList[i].preferences[j] - newFriend.preferences[j]);
 
-			if (total <= match.difference) {
+			if (total <= match.scoreDif) {
 				match.name = friendsList[i].name,
 				match.pic = friendsList[i].photo,
 				match.scoreDif = total
 			}
     	}
     }
-    friendList.push(newFriend);
+	friendsList.push(newFriend);
+	console.log(match);
     res.json(match);
-    console.log(match);
+  
 });
 }
 
