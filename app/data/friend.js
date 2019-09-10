@@ -18,7 +18,7 @@ var friendList = [
   },
   {
 	  name: "Tom Haverford",
-	  photo: "https://thumbs.gfycat.com/FickleSlushyGreatdane-small.gif",
+	  photo: "https://media.giphy.com/media/GAKKKRECROsta/giphy.gif",
 	  preferences: [1, 4, 2, 4, 2, 1, 5, 3]
   },
   {
